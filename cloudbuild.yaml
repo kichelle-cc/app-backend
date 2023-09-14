@@ -53,7 +53,7 @@ steps:
   # Deploy to Cloud Run
   # need to make sure no underscore in name
   - name: google/cloud-sdk
-    args: ['gcloud', 'run', 'deploy', 'time-app-${SHORT_SHA}', 
+    args: ['gcloud', 'run', 'deploy', 'fast-app-${SHORT_SHA}', 
             '--image=europe-west2-docker.pkg.dev/${PROJECT_ID}/${_ARTIFACT_REG_REPO_NAME}/${_REPO_NAME}:${SHORT_SHA}', 
             '--region', 'europe-west2', '--platform', 'managed', 
             '--allow-unauthenticated']
