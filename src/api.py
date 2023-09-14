@@ -3,6 +3,7 @@ from datetime import datetime
 
 app = FastAPI()
 
+
 @app.get("/")
 @app.get("/index")
 async def read_root():
