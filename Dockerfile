@@ -24,4 +24,4 @@ ENV FLASK_ENV=production
 # Run the command to start the Flask app
 # CMD ["uvicorn", "src.api:app", "--host", "0.0.0.0", "port", "5000", "--reload"]
 # CMD ["uvicorn", "src.api:app", "--host", "0.0.0.0", "--reload"]
-CMD ["uvicorn", "src.api:app", "--host", "0.0.0.0", "--port", "80"]
+CMD ["uvicorn", "src.api:app", "--host", "127.0.0.1", "--port", "8080"]
