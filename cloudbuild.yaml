@@ -38,7 +38,7 @@ steps:
 
   # Docker Build
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 
+    args: ['build', '--platform', 'linux/amd64', '-t', 
             'europe-west2-docker.pkg.dev/${PROJECT_ID}/${_ARTIFACT_REG_REPO_NAME}/${_REPO_NAME}:${SHORT_SHA}', '.']
 
   # Use Trivy to scan the built image
