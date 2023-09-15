@@ -22,7 +22,8 @@ COPY . .
 # Run the command to start the Flask app
 # CMD ["uvicorn", "src.api:app", "--host", "0.0.0.0", "port", "5000", "--reload"]
 # CMD ["uvicorn", "src.api:app", "--host", "0.0.0.0", "--reload"]
-CMD ["uvicorn", "src.api:app", "--host", "127.0.0.1", "--port", "${PORT}"]
+EXPOSE 8080
+CMD ["uvicorn", "src.api:app", "--host", "0.0.0.0", "--port", "8080"]
 
 # FROM python:3.9-slim-buster
 # # FROM python:3.7-slim
@@ -33,5 +34,4 @@ CMD ["uvicorn", "src.api:app", "--host", "127.0.0.1", "--port", "${PORT}"]
 # RUN pipenv install --deploy --system
 # COPY . .
 # EXPOSE 80
-# EXPOSE 8080
 # CMD exec gunicorn --bind :80 --workers 1 --worker-class uvicorn.workers.UvicornWorker  --threads 8 app.main:app
