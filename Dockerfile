@@ -27,9 +27,8 @@
 FROM python:3.7-slim
 WORKDIR /app
 COPY requirements.txt .
-RUN pip install pipenv
 RUN pip install --no-cache-dir -r requirements.txt
-RUN pipenv install --deploy --system
+RUN pip install --deploy --system
 COPY . .
 EXPOSE 80
 EXPOSE 8080

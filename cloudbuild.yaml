@@ -1,14 +1,14 @@
 steps:
 # Upgrade pip
-  - name: 'python'
-    entrypoint: 'pip'
-    args: ['install', '--upgrade', 'pip', '--user']
+  # - name: 'python'
+  #   entrypoint: 'pip'
+  #   args: ['install', '--upgrade', 'pip', '--user']
 
-  # Install requirements
-  - name: python
-    id: 'INSTALL_REQS'
-    entrypoint: pip
-    args: ['install', '-r', 'requirements.txt', '--user']
+  # # Install requirements
+  # - name: python
+  #   id: 'INSTALL_REQS'
+  #   entrypoint: pip
+  #   args: ['install', '-r', 'requirements.txt', '--user']
 
   # Install testing requirements
   # - name: python
