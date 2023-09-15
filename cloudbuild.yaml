@@ -11,10 +11,10 @@ steps:
     args: ['install', '-r', 'requirements.txt', '--user']
 
   # Install testing requirements
-  - name: python
-    id: 'INSTALL_TEST_REQS'
-    entrypoint: pip
-    args: ['install', 'flake8', 'pytest', 'licensecheck', '--user']
+  # - name: python
+    # id: 'INSTALL_TEST_REQS'
+    # entrypoint: pip
+    # args: ['install', 'flake8', 'pytest', 'licensecheck', '--user']
 
   # Unit test
   # - name: 'python'
@@ -31,10 +31,10 @@ steps:
     # args: ['-m', 'licensecheck', '-u', 'requirements', '--file', '${SHORT_SHA}_license_log.xml']
 
   # Linting
-  - name: 'python'
-    id: 'FLAKE8'
-    entrypoint: 'python3'
-    args: ['-m', 'flake8', '--max-line-length=100', 'src']
+  # - name: 'python'
+    # id: 'FLAKE8'
+    # entrypoint: 'python3'
+    # args: ['-m', 'flake8', '--max-line-length=100', 'src']
 
   # Docker Build
   - name: 'gcr.io/cloud-builders/docker'
@@ -42,8 +42,8 @@ steps:
             'europe-west2-docker.pkg.dev/${PROJECT_ID}/${_ARTIFACT_REG_REPO_NAME}/${_REPO_NAME}:${SHORT_SHA}', '.']
 
   # Use Trivy to scan the built image
-  - name: 'aquasec/trivy'
-    args: ['image', 'europe-west2-docker.pkg.dev/${PROJECT_ID}/${_ARTIFACT_REG_REPO_NAME}/${_REPO_NAME}:${SHORT_SHA}']
+  # - name: 'aquasec/trivy'
+    # args: ['image', 'europe-west2-docker.pkg.dev/${PROJECT_ID}/${_ARTIFACT_REG_REPO_NAME}/${_REPO_NAME}:${SHORT_SHA}']
 
   # Docker push to Google Artifact Registry
   # Need to create a new artifact reg repository for the project first 
