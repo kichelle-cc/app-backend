@@ -39,7 +39,7 @@ steps:
   # Docker Build
   - name: 'gcr.io/cloud-builders/docker'
     args: ['build', '--platform', 'linux/amd64', '-t', 
-            'europe-west2-docker.pkg.dev/${PROJECT_ID}/${_ARTIFACT_REG_REPO_NAME}/${_REPO_NAME}:${SHORT_SHA}', '.']
+            'europe-west1-docker.pkg.dev/${PROJECT_ID}/${_ARTIFACT_REG_REPO_NAME}/${_REPO_NAME}:${SHORT_SHA}', '.']
 
   # Use Trivy to scan the built image
   # - name: 'aquasec/trivy'
@@ -48,14 +48,14 @@ steps:
   # Docker push to Google Artifact Registry
   # Need to create a new artifact reg repository for the project first 
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push',  'europe-west2-docker.pkg.dev/${PROJECT_ID}/${_ARTIFACT_REG_REPO_NAME}/${_REPO_NAME}:${SHORT_SHA}']
+    args: ['push',  'europe-west1-docker.pkg.dev/${PROJECT_ID}/${_ARTIFACT_REG_REPO_NAME}/${_REPO_NAME}:${SHORT_SHA}']
 
   # Deploy to Cloud Run
   # need to make sure no underscore in name
   - name: google/cloud-sdk
     args: ['gcloud', 'run', 'deploy', 'fast-app-${SHORT_SHA}', 
-            '--image=europe-west2-docker.pkg.dev/${PROJECT_ID}/${_ARTIFACT_REG_REPO_NAME}/${_REPO_NAME}:${SHORT_SHA}', 
-            '--region', 'europe-west2', '--platform', 'managed', 
+            '--image=europe-west1-docker.pkg.dev/${PROJECT_ID}/${_ARTIFACT_REG_REPO_NAME}/${_REPO_NAME}:${SHORT_SHA}', 
+            '--region', 'europe-west1', '--platform', 'managed', 
             '--allow-unauthenticated']
 
 options:
